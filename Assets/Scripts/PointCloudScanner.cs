@@ -8,16 +8,19 @@ public class PointCloudScanner : MonoBehaviour
 
     private void Awake()
     {
+        // はじめはスキャンを停止しておく
         pointCloudManager.enabled = false;
     }
 
     public void StartScan()
     {
+        // スキャンを開始する
         pointCloudManager.enabled = true;
     }
 
     public void StopScan()
     {
+        // スキャンを停止する
         pointCloudManager.enabled = false;
     }
 }
