@@ -40,7 +40,6 @@ public class PointCloudFileReader : MonoBehaviour
                 var values = line.Split(',');
                 if (values.Length != 3)
                 {
-                    Debug.LogWarning("Invalid line: " + line);
                     continue;
                 }
 

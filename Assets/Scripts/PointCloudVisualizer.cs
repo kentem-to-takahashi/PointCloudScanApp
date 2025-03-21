@@ -12,6 +12,11 @@ public class PointCloudVisualizer : MonoBehaviour
         pointCloudFileReader.ReadedFile += DisplayPointCloud;
     }
 
+    private void OnDestroy()
+    {
+        pointCloudFileReader.ReadedFile -= DisplayPointCloud;
+    }
+
     private void DisplayPointCloud()
     {
         // パーティクルシステムを取得する
