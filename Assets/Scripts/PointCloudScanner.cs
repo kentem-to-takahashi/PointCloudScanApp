@@ -9,10 +9,24 @@ public class PointCloudScanner : MonoBehaviour
 
     private Dictionary<ulong, Vector3> points = new Dictionary<ulong, Vector3>();
 
+    public Vector3[] Points
+    {
+        get
+        {
+            return new List<Vector3>(points.Values).ToArray();
+        }
+    }
+
     private void Awake()
     {
         // はじめはスキャンを停止しておく
         pointCloudManager.enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        // GameObjectが破棄されるときにARPointCloudManagerの更新イベントを解除する
+        pointCloudManager.trackablesChanged.RemoveListener(OnTrackablesChanged);
     }
 
     public void StartScan()
