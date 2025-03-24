@@ -1,4 +1,6 @@
 # PointCloudScanApp
+点群Scanアプリ開発入門のハンズオンです。
+
 Manualsに手順を記載したPDFがあります。
 
 Step0:環境構築
