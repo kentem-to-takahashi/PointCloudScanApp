@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace Example
+namespace Bonus
 {
     public class PointCloudFileReader : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-namespace Example
+namespace Bonus
 {
     public class PointCloudScanner : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Example
+namespace Bonus
 {
-    public class ARSceneBehaveButton : MonoBehaviour
+    public class ViewSceneBehaveButton : MonoBehaviour
     {
         [SerializeField]
         private SceneBehaviour sceneBehaviour;
@@ -27,7 +27,7 @@ namespace Example
 
         private void OnClick()
         {
-            sceneBehaviour.LoadARScene();
+            sceneBehaviour.LoadViewScene();
         }
     }
 }

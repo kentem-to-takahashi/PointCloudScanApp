@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Example
+namespace Bonus
 {
     public class PointCloudVisualizer : MonoBehaviour
     {

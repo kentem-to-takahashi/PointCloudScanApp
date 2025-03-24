@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace Example
+namespace Bonus
 {
     public class PointCloudSaver : MonoBehaviour
     {
