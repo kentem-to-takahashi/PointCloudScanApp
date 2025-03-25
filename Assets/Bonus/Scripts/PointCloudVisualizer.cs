@@ -39,6 +39,33 @@ namespace Bonus
 
             // パーティクルシステムにパーティクルの情報を設定する
             particleSystem.SetParticles(particles, numParticles);
+
+        }
+
+        /// <summary>
+        /// パーティクルの境界（Bounds）を計算するメソッド
+        /// </summary>
+        /// <returns>点群データの境界を表す Bounds</returns>
+        public Bounds GetCalculateBounds()
+        {
+            if (particles == null || particles.Length == 0)
+            {
+                throw new System.InvalidOperationException("particles is null or empty.");
+            }
+
+            Vector3 min = particles[0].position;
+            Vector3 max = particles[0].position;
+
+            foreach (var particle in particles)
+            {
+                min = Vector3.Min(min, particle.position);
+                max = Vector3.Max(max, particle.position);
+            }
+
+            Vector3 center = (min + max) / 2;
+            Vector3 size = max - min;
+
+            return new Bounds(center, size);
         }
     }
 }
