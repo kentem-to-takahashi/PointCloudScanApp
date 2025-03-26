@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
@@ -9,13 +10,13 @@ namespace Step2
         [SerializeField]
         private ARPointCloudManager pointCloudManager;
 
-        private List<Vector3> points = new List<Vector3>();
+        private Dictionary<ulong, Vector3> points = new Dictionary<ulong, Vector3>();
 
         public Vector3[] Points
         {
             get
             {
-                return points.ToArray();
+                return points.Values.ToArray();
             }
         }
 
@@ -59,6 +60,11 @@ namespace Step2
                     continue;
                 }
 
+                if (!pointCloud.identifiers.HasValue)
+                {
+                    continue;
+                }
+
                 // ポイントクラウドの位置情報をListに追加する
                 for (int i = 0; i < pointCloud.positions.Value.Length; i++)
                 {
@@ -72,7 +78,17 @@ namespace Step2
                         }
                     }
 
-                    points.Add(pointCloud.positions.Value[i]);
+                    var id = pointCloud.identifiers.Value[i];
+                    var position = pointCloud.positions.Value[i];
+
+                    if (points.ContainsKey(id))
+                    {
+                        points[id] = position;
+                    }
+                    else
+                    {
+                        points.Add(id, position);
+                    }
                 }
             }
         }
