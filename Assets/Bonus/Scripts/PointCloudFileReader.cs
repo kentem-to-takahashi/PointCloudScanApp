@@ -29,8 +29,6 @@ namespace Bonus
                 return;
             }
 
-            points.Clear();
-
             using (var reader = File.OpenText(filePath))
             {
                 while (!reader.EndOfStream)

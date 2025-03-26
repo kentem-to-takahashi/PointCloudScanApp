@@ -29,8 +29,6 @@ namespace Step3
                 return;
             }
 
-            points.Clear();
-
             using (var reader = File.OpenText(filePath))
             {
                 while (!reader.EndOfStream)

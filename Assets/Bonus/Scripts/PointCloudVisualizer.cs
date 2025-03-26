@@ -24,11 +24,13 @@ namespace Bonus
             // パーティクルシステムを取得する
             var particleSystem = GetComponent<ParticleSystem>();
 
+            // 点群ファイルリーダーから点群の位置情報を取得する
             var points = pointCloudFileReader.Points;
-            var numParticles = points.Length;
 
             // パーティクルの配列を作成して点群の位置情報を設定する
+            var numParticles = points.Length;
             particles = new ParticleSystem.Particle[numParticles];
+
             for (var i = 0; i < numParticles; i++)
             {
                 particles[i].startColor = particleSystem.main.startColor.color;
@@ -39,7 +41,6 @@ namespace Bonus
 
             // パーティクルシステムにパーティクルの情報を設定する
             particleSystem.SetParticles(particles, numParticles);
-
         }
 
         /// <summary>
