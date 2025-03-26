@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Camera _camera;
+    private Transform _cinemachineCameraTransform;//操作するcinemachineのカメラのTransform
 
     [SerializeField]
     private Transform _pointCloudVisualizer;
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        _camera.transform.Translate(_moveSpeed);
+        _cinemachineCameraTransform.Translate(_moveSpeed);
     }
 
     private void OnMove(InputValue value)

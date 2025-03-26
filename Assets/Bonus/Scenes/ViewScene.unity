@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7762407f46f8430e9956c35650c2f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 0}
+  _cameraTransform: {fileID: 701631941}
   _pointCloudVisualizer: {fileID: 476541655}
   MoveSpeedFactor: 0.05
   RotateSpeedFactor: 0.05
