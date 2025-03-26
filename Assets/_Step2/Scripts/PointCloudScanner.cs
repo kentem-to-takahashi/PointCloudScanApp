@@ -9,13 +9,13 @@ namespace Step2
         [SerializeField]
         private ARPointCloudManager pointCloudManager;
 
-        private Dictionary<ulong, Vector3> points = new Dictionary<ulong, Vector3>();
+        private List<Vector3> points = new List<Vector3>();
 
         public Vector3[] Points
         {
             get
             {
-                return new List<Vector3>(points.Values).ToArray();
+                return points.ToArray();
             }
         }
 
@@ -59,25 +59,20 @@ namespace Step2
                     continue;
                 }
 
-                if (!pointCloud.identifiers.HasValue)
-                {
-                    continue;
-                }
-
-                // ポイントクラウドの位置情報をDictionaryに追加する
+                // ポイントクラウドの位置情報をListに追加する
                 for (int i = 0; i < pointCloud.positions.Value.Length; i++)
                 {
-                    var id = pointCloud.identifiers.Value[i];
-                    var position = pointCloud.positions.Value[i];
+                    // confidenceValuesはAndroidのみ対応しているため、nullチェックを行う
+                    if (pointCloud.confidenceValues.HasValue)
+                    {
+                        // 信頼度が0.5未満の点は無視する
+                        if (pointCloud.confidenceValues.Value[i] < 0.5f)
+                        {
+                            continue;
+                        }
+                    }
 
-                    if (points.ContainsKey(id))
-                    {
-                        points[id] = position;
-                    }
-                    else
-                    {
-                        points.Add(id, position);
-                    }
+                    points.Add(pointCloud.positions.Value[i]);
                 }
             }
         }
