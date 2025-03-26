@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 2086812266}
   _pointCloudVisualizer: {fileID: 476541655}
-  MoveSpeedFactor: 0.01
+  MoveSpeedFactor: 0.05
   RotateSpeedFactor: 0.05
 --- !u!114 &229178770
 MonoBehaviour:

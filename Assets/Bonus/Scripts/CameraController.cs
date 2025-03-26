@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform _pointCloudVisualizer;
 
-    public float MoveSpeedFactor = 0.01f;
+    public float MoveSpeedFactor = 0.05f;
     public float RotateSpeedFactor = 0.05f;
 
     private Vector3 _moveSpeed = Vector3.zero;
