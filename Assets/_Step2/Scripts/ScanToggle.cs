@@ -5,6 +5,7 @@ namespace Step2
 {
     public class ScanToggle : MonoBehaviour
     {
+        // PointCloudScannerをインスペクターから設定できるようにする
         [SerializeField]
         private PointCloudScanner pointCloudScanner;
 
