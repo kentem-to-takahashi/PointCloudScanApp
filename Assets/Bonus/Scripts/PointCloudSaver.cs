@@ -5,6 +5,7 @@ namespace Bonus
 {
     public class PointCloudSaver : MonoBehaviour
     {
+        // PointCloudScannerをインスペクターから設定できるようにする
         [SerializeField]
         private PointCloudScanner pointCloudScanner;
 
@@ -12,6 +13,7 @@ namespace Bonus
 
         public void Save()
         {
+            // 点群の位置情報を取得する
             var points = pointCloudScanner.Points;
 
             // 点群の位置情報をファイルに保存する
