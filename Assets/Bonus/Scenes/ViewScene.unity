@@ -288,8 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7762407f46f8430e9956c35650c2f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 2086812266}
   _pointCloudVisualizer: {fileID: 476541655}
-  RotateSpeed: 0.05
+  MoveSpeedFactor: 0.01
+  RotateSpeedFactor: 0.05
 --- !u!114 &229178770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5436,6 +5438,10 @@ PrefabInstance:
       value: VirtualGamePad
       objectReference: {fileID: 0}
     - target: {fileID: 283416558723795961, guid: c5fc4a3f16c6d9f4282658e06381255a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436467867827155849, guid: c5fc4a3f16c6d9f4282658e06381255a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

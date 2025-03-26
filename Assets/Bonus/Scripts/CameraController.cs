@@ -1,31 +1,67 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 public class CameraController : MonoBehaviour
 {
+    [SerializeField]
+    private Camera _camera;
 
     [SerializeField]
     private Transform _pointCloudVisualizer;
 
-    public float RotateSpeed = 0.05f;
+    public float MoveSpeedFactor = 0.01f;
+    public float RotateSpeedFactor = 0.05f;
 
-    private PlayerInput _playerInput;
+    private Vector3 _moveSpeed = Vector3.zero;
 
-    private InputAction _look;
-
-    void Start()
+    private void Update()
     {
-        _playerInput = GetComponent<PlayerInput>();
-
-        _playerInput.SwitchCurrentActionMap("Player");
-        var map = _playerInput.currentActionMap;
-        _look = map.FindAction("Look");
+        _camera.transform.Translate(_moveSpeed);
     }
 
-    void Update()
+    private void OnMove(InputValue value)
     {
-        var lookValue = _look.ReadValue<Vector2>();
-        _pointCloudVisualizer.Rotate(new Vector3(-1f * lookValue.y * RotateSpeed, lookValue.x * RotateSpeed, 0f));
+        var moveValue = value.Get<Vector2>();
+
+        _moveSpeed = new Vector3(moveValue.x * MoveSpeedFactor, 0f, moveValue.y * MoveSpeedFactor);
+    }
+
+    private void OnLook(InputValue value)
+    {
+        if (CountPressed() == 1 &&
+        IsOnUI(Touchscreen.current.primaryTouch.position.ReadValue()))
+            return;
+
+
+        var lookValue = value.Get<Vector2>();
+        _pointCloudVisualizer.Rotate(new Vector3(lookValue.y * RotateSpeedFactor, -1 * lookValue.x * RotateSpeedFactor, 0f), Space.World);
+    }
+
+    private int CountPressed()
+    {
+        int count = 0;
+        foreach (var touch in Touchscreen.current.touches)
+        {
+            if (touch.press.isPressed)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private bool IsOnUI(Vector2 screenPosition)
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = screenPosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        return results.Count > 0;
     }
 }
