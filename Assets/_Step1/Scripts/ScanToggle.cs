@@ -5,6 +5,7 @@ namespace Step1
 {
     public class ScanToggle : MonoBehaviour
     {
+        // PointCloudScannerをインスペクターから設定できるようにする
         [SerializeField]
         private PointCloudScanner pointCloudScanner;
 
@@ -12,8 +13,13 @@ namespace Step1
 
         private void Awake()
         {
-            // Toggleコンポーネントを取得して、値が変更されたときのイベントを登録する
+            // Toggleコンポーネントを取得する
             toggle = GetComponent<Toggle>();
+        }
+
+        private void Start()
+        {
+            // イベントを登録する
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
         }
 
@@ -23,10 +29,10 @@ namespace Step1
             toggle.onValueChanged.RemoveListener(OnToggleValueChanged);
         }
 
-        private void OnToggleValueChanged(bool isToggled)
+        private void OnToggleValueChanged(bool isOn)
         {
             // トグルがオンのときはスキャンを開始し、オフのときはスキャンを停止する
-            if (isToggled)
+            if (isOn)
             {
                 pointCloudScanner.StartScan();
             }

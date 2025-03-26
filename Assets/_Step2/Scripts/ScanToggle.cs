@@ -13,8 +13,13 @@ namespace Step2
 
         private void Awake()
         {
-            // Toggleコンポーネントを取得して、値が変更されたときのイベントを登録する
+            // Toggleコンポーネントを取得する
             toggle = GetComponent<Toggle>();
+        }
+
+        private void Start()
+        {
+            // イベントを登録する
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
         }
 
@@ -24,10 +29,10 @@ namespace Step2
             toggle.onValueChanged.RemoveListener(OnToggleValueChanged);
         }
 
-        private void OnToggleValueChanged(bool isToggled)
+        private void OnToggleValueChanged(bool isOn)
         {
             // トグルがオンのときはスキャンを開始し、オフのときはスキャンを停止する
-            if (isToggled)
+            if (isOn)
             {
                 pointCloudScanner.StartScan();
             }
