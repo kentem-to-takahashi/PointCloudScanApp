@@ -81,6 +81,7 @@ namespace Step2
                     var id = pointCloud.identifiers.Value[i];
                     var position = pointCloud.positions.Value[i];
 
+                    // 既に同じIDのポイントが存在する場合は上書きする
                     if (points.ContainsKey(id))
                     {
                         points[id] = position;
