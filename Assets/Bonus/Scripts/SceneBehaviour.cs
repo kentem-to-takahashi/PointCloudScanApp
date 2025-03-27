@@ -9,5 +9,10 @@ namespace Bonus
         {
             SceneManager.LoadScene("ViewScene");
         }
+
+        public void LoadARScene()
+        {
+            SceneManager.LoadScene("ARScene");
+        }
     }
 }
