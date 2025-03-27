@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class PointCloudSaver : MonoBehaviour
@@ -13,7 +14,10 @@ public class PointCloudSaver : MonoBehaviour
 
         // 点群の位置情報をファイルに保存する
         var filePath = Application.persistentDataPath + FILE_NAME;
+        using (var writer = File.CreateText(filePath))
+        {
 
+        }
 
         Debug.Log("Saved point cloud to " + filePath);
     }
