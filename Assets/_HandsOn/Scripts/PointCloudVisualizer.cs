@@ -20,11 +20,15 @@ public class PointCloudVisualizer : MonoBehaviour
     private void DisplayPointCloud()
     {
         // パーティクルシステムを取得する
+        var particleSystem = GetComponent<ParticleSystem>();
 
         // 点群ファイルリーダーから点群の位置情報を取得する
 
+
         // パーティクルの配列を作成して点群の位置情報を設定する
 
+
         // パーティクルシステムにパーティクルの情報を設定する
+        
     }
 }
