@@ -5130,7 +5130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31069cbe71638442b8c4d6844cd482cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCloudFileReader: {fileID: 0}
+  pointCloudFileReader: {fileID: 177334996}
 --- !u!1 &812646261
 GameObject:
   m_ObjectHideFlags: 0
